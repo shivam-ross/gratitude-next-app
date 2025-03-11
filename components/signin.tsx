@@ -1,30 +1,42 @@
 'use client'
 
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Image from "next/image"
 import Link from "next/link";
-import { useState } from "react"
-
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react"
 
 export default function SignIn () {
     const [email, setEmail] =useState('');
     const [password, setPassword] = useState('');
+    const session = useSession();
+    const router = useRouter();
 
-        const handleSubmit = async () => {
-        const result = await signIn('credentials', {
-          email,
-          password,
-          redirect: false, // Prevents automatic redirect
-        });
-    
-        if (result?.error) {
-          console.error('Sign-in error:', result.error);
-          // Handle error (e.g., display error message)
-        } else {
-          console.log("Sign-in Success")
-          //handle success
+    useEffect(()=> {
+        if(session.status ==  'authenticated') {
+            router.push("/home");
         }
-      };
+    },[session, router])
+
+    interface SignInResult {
+        error?: string | null;
+    }
+
+
+    const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>): Promise<void> => {
+        e.preventDefault();
+        const result: SignInResult | undefined = await signIn('credentials', {
+            email,
+            password,
+            redirect: false,
+        });
+
+        if (result?.error) {
+            console.log('Sign-in error:', result.error);
+        } else {
+            console.log("Sign-in Success")
+        }
+    };
 
     return(
         <div className="lg:grid lg:grid-cols-2 bg-amber-50">
