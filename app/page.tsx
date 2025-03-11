@@ -6,7 +6,7 @@ export default function HomePage() {
       <div className="flex flex-col h-screen items-center bg-amber-50">
         <div className="flex flex-col items-center">
           <Image src={"/sun-decoration.png"} alt="sun" width={500} height={500} className="h-96 w-auto"/>
-          <h1 className="text-4xl font-bold font-sans text-slate-800 md:text-5xl">Welcome to Gratitude!</h1>
+          <h1 className="text-2xl font-bold font-sans text-slate-800 md:text-5xl">Welcome to Gratitude!</h1>
           <div className="flex flex-row">
           <p className="text-md text-slate-600 mr-2 mb-4">The mindfulness and self-care tool</p>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
