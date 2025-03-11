@@ -5,6 +5,15 @@ import Image from "next/image"
 import Link from "next/link";
 import { useState } from "react"
 
+const handleSubmit = async (e) => {
+     e.preventDefault();
+     await signIn('credentials', {
+          email,
+          password,
+          redirect: false, // Prevents automatic redirect
+        });
+      }; 
+
 export default function SignIn () {
     const [email, setEmail] =useState('');
     const [password, setPassword] = useState('');
@@ -40,9 +49,7 @@ export default function SignIn () {
                                 }}/>
                             </label>
                             <button className="bg-red-500 py-2 px-4 mt-2 text-white rounded-lg text-center font-semibold w-full text-md"
-                            onClick={() => {
-                                signIn("credentials", { email, password });
-                            }}
+                            onClick={handleSubmit}
                             >Sign In</button>
                         </form>
                         <h3 className="text-2xl font-sans font-semibold text-center m-2">Or</h3>
