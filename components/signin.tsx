@@ -6,13 +6,21 @@ import Link from "next/link";
 import { useState } from "react"
 
 const handleSubmit = async (e) => {
-     e.preventDefault();
-     await signIn('credentials', {
+        e.preventDefault();
+        const result = await signIn('credentials', {
           email,
           password,
           redirect: false, // Prevents automatic redirect
         });
-      }; 
+    
+        if (result?.error) {
+          console.error('Sign-in error:', result.error);
+          // Handle error (e.g., display error message)
+        } else {
+          console.log("Sign-in Success")
+          //handle success
+        }
+      };
 
 export default function SignIn () {
     const [email, setEmail] =useState('');
