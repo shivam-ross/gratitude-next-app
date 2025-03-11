@@ -5,7 +5,12 @@ import Image from "next/image"
 import Link from "next/link";
 import { useState } from "react"
 
-const handleSubmit = async (e) => {
+
+export default function SignIn () {
+    const [email, setEmail] =useState('');
+    const [password, setPassword] = useState('');
+
+        const handleSubmit = async (e) => {
         e.preventDefault();
         const result = await signIn('credentials', {
           email,
@@ -21,10 +26,6 @@ const handleSubmit = async (e) => {
           //handle success
         }
       };
-
-export default function SignIn () {
-    const [email, setEmail] =useState('');
-    const [password, setPassword] = useState('');
 
     return(
         <div className="lg:grid lg:grid-cols-2 bg-amber-50">
