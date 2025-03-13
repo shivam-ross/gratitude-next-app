@@ -77,8 +77,8 @@ export default function EntryPage() {
         onClick={handleSave}>Save</button>
       </div>
 
-      <input
-  className="w-full text-2xl font-bold bg-transparent outline-none border-none text-white placeholder-white font-sans"
+      <textarea
+  className="w-full min-h-[20vh] h-auto md:min-h-auto bg-transparent outline-none border-none text-xl font-bold leading-relaxed placeholder-white resize-none font-sans overflow-hidden"
   value={prompt}
   onChange={(e) => setPrompt(e.target.value)}
   placeholder="Write your own prompt..."
