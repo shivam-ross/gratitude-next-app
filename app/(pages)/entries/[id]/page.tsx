@@ -111,13 +111,13 @@ export default function EntryDetailsPage() {
             >{(editMode? "Save" : "Edit")}</button>
           </div>
     
-          <input
-      className="w-full text-2xl font-bold bg-transparent outline-none border-none text-white placeholder-white font-sans"
-      value={prompt}
-      readOnly={!editMode}
-      onChange={(e) => setPrompt(e.target.value)}
-      placeholder="Write your own prompt..."
-    />
+          <textarea
+            className="w-full min-h-[20vh] h-auto md:min-h-auto bg-transparent outline-none border-none text-xl font-bold leading-relaxed placeholder-white resize-none font-sans overflow-hidden"
+            value={prompt}
+            readOnly={!editMode}
+            onChange={(e) => setPrompt(e.target.value)}
+            placeholder="Write your own prompt..."
+          />
     
           <textarea
             className="w-full h-[85%] mt-4 bg-transparent outline-none border-none text-lg leading-relaxed resize-none placeholder-white font-sans overflow-y-scrool"
